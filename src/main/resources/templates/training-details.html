@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Training details</title>
+</head>
+<body>
+<div style="text-align:center;">
+    <h2>Detailed Information</h2>
+    <div class="container" style="text-align:center;">
+        <h3 th:text="${trainingDetails.type}"></h3>
+        <p th:text="${#dates.format(trainingDetails.date, 'dd-MMM-yyyy')}"></p>
+        <p th:text="${trainingDetails.description}"></p>
+        <p th:text="${trainingDetails.participants}"></p>
+        <p th:text="${trainingDetails.weatherConditions}"></p>
+    </div>
+    <div style="margin:0.5em;margin-left:5em;">
+
+        <a th:href="@{'/editTraining/'+${trainingDetails.id}}">
+            <button type="submit">Edit</button>
+        </a>
+        <a th:href="@{'/deleteTraining/'+${trainingDetails.id}}">
+            <button type="submit">Delete</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <h1>User Registration - Sign Up</h1>
+    </div>
+    <form th:action="@{processRegister}" th:object="${user}" method="post" style="max-width: 600px; margin: 0 auto;">
+        <div class="m-3">
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Full Name: </label>
+                <div class="col-8">
+                    <input type="text" th:field="*{name}" class="form-control" required
+                           maxlength="30"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Nationality: </label>
+                <div class="col-8">
+                    <!--                    <select class="form-control selectpicker countrypicker" id="country" th:field="*{nationality}"-->
+                    <!--                            data-flag="false">-->
+                    <!--                    </select>-->
+                    <select th:field="*{nationality}" class="form-control" id="dropDownList">
+                        <option hidden value="0">Select your nationality</option>
+                        <option th:each="option : ${options}" th:value="${option}" th:text="${option}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Gender: </label>
+                <div class="col-8">
+                    <select th:field="*{gender}" class="form-control">
+                        <option th:value="'Male'" th:text="Male"></option>
+                        <option th:value="'Female'" th:text="Female"></option>
+                    </select>
+                </div>
+            </div>
+            <!--            <div class="form-group row">-->
+            <!--                <label class="col-4 col-form-label">Date Of Birth: </label>-->
+            <!--                <div class="col-8">-->
+            <!--                    <input type="date" th:field="*{dateOfBirth}" class="form-control"/>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Date Of Birth: </label>
+                <div class="col-8">
+                    <input type="date" th:field="*{dateOfBirth}"
+                           class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">E-mail: </label>
+                <div class="col-8">
+                    <input type="email" th:field="*{email}" class="form-control" required
+                           minlength="4"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4 col-form-label">Password: </label>
+                <div class="col-8">
+                    <input type="password" th:field="*{password}" class="form-control" required
+                           maxlength="10"/>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

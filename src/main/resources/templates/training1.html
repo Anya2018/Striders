@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Training</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="main-nav">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">
+                <h1><img class="img-responsive" src="images/logo.png" alt="logo"></h1>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="scroll active"><a href="#home">Home</a></li>
+                <li class="scroll"><a href="#services">Training schedule</a></li>
+                <li class="scroll"><a href="#portfolio">Challenges</a></li>
+                <li class="scroll"><a href="#about-us">Worldwide</a></li>
+                <li class="scroll"><a href="#team">We</a></li>
+                <li class="scroll"><a href="#blog">Volunteers</a></li>
+                <li><a th:href="@{users}">Users</a></li>
+                <li>
+                    <button type="submit" class="loginBtn">
+                        <a th:href="@{login}">Login</a></button>
+                    <button type="submit" class="loginBtn">
+                        <a th:href="@{register}">Register</a></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div><!--/#main-nav-->
+<div style="margin-top:3em;">
+
+    <div class="row" style="margin-left:2em;margin-right:2em;">
+        <div class="col-md-7">
+            <h2>
+                Track Speed Session
+            </h2>
+            <h3>
+                Every Tuesday
+            </h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img src="images/q.jpg" style="width:100%;height:100%;object-fit: contain;">
+        </div>
+
+
+    </div>
+
+    <div style="margin:0.5em;margin-left:5em;">
+        <a th:href="@{~/speedTrainings}">
+            <button type="submit">Training Diary</button>
+        </a>
+    </div>
+
+
+    <div>
+        <section id="contact">
+            <div id="google-map" class="wow fadeIn" data-latitude="31.303373" data-longitude="120.746657"
+                 data-wow-duration="1000ms" data-wow-delay="400ms"></div>
+            <div id="train-us" class="parallax">
+                <div class="container">
+                    <div class="row">
+                        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp"
+                             data-wow-duration="1000ms"
+                             data-wow-delay="300ms" style="margin-top:5em;">
+                            <h2>Useful Tips</h2>
+                            <div class="row">
+                                <div class="col-md-4" style="margin-top:2em;">
+                                    <p>
+                                        It’s important to warm-up properly before any interval session. You can usually
+                                        find space to jog a few laps of the track in lane 8, and there should be space
+                                        on the infield or outfield to do some dynamic warm-ups. The same goes for
+                                        cooling down.
+
+                                    </p>
+                                </div>
+                                <div class=" col-md-4" style="margin-top:2em;">
+                                    <p>
+                                        Leave your music and headphones at home. When on the track, it is essential to
+                                        hear what is going on around you at all times to be very aware of your
+                                        surroundings. Should another runner want to pass you, you may hear 'Track!' or
+                                        'On your left!' from behind you. This means they are going to pass you, so be
+                                        prepared to let them go by.
+
+                                    </p>
+                                </div>
+                                <div class="col-md-4" style="margin-top:2em;">
+                                    <p>
+                                        Always warm up before your track workout. Plan to spend about 20 to 30 minutes
+                                        running at a very easy pace beforehand to make sure you are thoroughly warmed up
+                                        before doing speedwork. You can do a warm-up on the track by using the outer
+                                        lane or run easy off the track on surrounding roads. Stretching should be done
+                                        off the track as well.
+
+                                    </p>
+                                </div>
+                                <div class=" col-lg-4" style="margin-top:2em;">
+                                    <p>
+                                        If you’re going by yourself, have a plan for your session. Don’t just run
+                                        mindlessly round the track – there’s much more interesting ways to clock up
+                                        miles – go with an interval session planned out.
+                                    </p>
+                                </div>
+                                <div class=" col-lg-4" style="margin-top:2em;">
+                                    <p>
+                                        Interval sessions for endurance athletes (that’s you if you’re training for a 5k
+                                        or longer) are typically made up of 400m (1 lap), 800m (2 laps), 1200m (3 laps)
+                                        or 1600m (4 laps) reps. You can start your rep anywhere on the track but it’s
+                                        easier to do at the finish line.
+                                    </p>
+                                </div>
+                                <div class=" col-lg-4" style="margin-top:2em;">
+                                    <p>
+                                        Make sure you stay hydrated before, during, and after your track workouts. This
+                                        will help prevent muscle cramps and speed up your recovery time.
+
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section><!--/#contact-->
+    </div>
+
+    <!-- ===========================
+    TESTIMONIAL SECTION START
+    =========================== -->
+    <div id="testimonials" class="container">
+        <div class="sectionhead wow bounceInUp" data-wow-duration="2s">
+            <span class="bigicon icon-bubbles"></span>
+            <h2>What Striders say about Track Session</h2>
+            <h4>Expedita nobis natus doloribus blanditiis quos, atque voluptatem, veritatis soluta eveniet ea!</h4>
+            <hr class="separetor">
+        </div>
+        <!-- TESTIMONIAL SECTIONHEAD END -->
+
+        <!-- TESTIMONIAL ITEMS START -->
+        <div class="row">
+            <!-- 1ST TESTIMONIAL ITEM -->
+            <div class="col-md-6 wow bounceIn" data-wow-duration="2s">
+                <div class="clientsphoto">
+                    <img src="img/dan.jpg" alt="Dan">
+                </div>
+
+                <div class="quote">
+                    <blockquote>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia et pariatur ipsam tempora
+                            officia ea iusto expedita, nulla, hic odit saepe repellat nesciunt dolorum, officiis laborum
+                            ad, aliquam. Quos, et.</p>
+                    </blockquote>
+                    <h5>Dan Cederholm</h5>
+                    <p>Co-Founder, Dribbble</p>
+                </div>
+            </div>
+            <!-- 1ST TESTIMONIAL ITEM END -->
+
+            <!-- 2ND TESTIMONIAL ITEM -->
+            <div class="col-md-6 wow bounceIn" data-wow-duration="3s">
+                <div class="clientsphoto">
+                    <img src="img/bill.jpg" alt="Bill">
+                </div>
+
+                <div class="quote">
+                    <blockquote>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia et pariatur ipsam tempora
+                            officia ea iusto expedita, nulla, hic odit saepe repellat nesciunt dolorum, officiis laborum
+                            ad, aliquam. Quos, et. lorem</p>
+                    </blockquote>
+                    <h5>Bill S Kenney</h5>
+                    <p>Art Director at Focus Lab LLC.</p>
+                </div>
+            </div>
+            <!-- 2ND TESTIMONIAL ITEM END -->
+
+            <!-- 3RD TESTIMONIAL ITEM -->
+            <div class="col-md-6 wow bounceIn" data-wow-duration="3s">
+                <div class="clientsphoto">
+                    <img src="img/eric.png" alt="Eric">
+                </div>
+
+                <div class="quote">
+                    <blockquote>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia et pariatur ipsam tempora
+                            officia ea iusto expedita, nulla, hic odit saepe repellat nesciunt dolorum, officiis laborum
+                            ad, aliquam. Quos, et.</p>
+                    </blockquote>
+                    <h5>Eric Hoffman</h5>
+                    <p>Principal Designer, JellyJar</p>
+                </div>
+            </div>
+            <!-- 3RD TESTIMONIAL ITEM END -->
+
+            <!-- 4TH TESTIMONIAL ITEM -->
+            <div class="col-md-6 wow bounceIn" data-wow-duration="2s">
+                <div class="clientsphoto">
+                    <img src="img/ramil.jpg" alt="Ramil">
+                </div>
+
+                <div class="quote">
+                    <blockquote>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia et pariatur ipsam tempora
+                            officia ea iusto expedita, nulla, hic odit saepe repellat nesciunt dolorum, officiis laborum
+                            ad, aliquam. Quos, et.</p>
+                    </blockquote>
+                    <h5>Ramil Derogongun</h5>
+                    <p>Visual Designer, Bluroon</p>
+                </div>
+            </div>
+            <!-- 4TH TESTIMONIAL ITEM END -->
+        </div>
+    </div>
+    <!-- TESTIMONIAL SECTION END -->
+
+    <div>
+        <h2>Gallery</h2>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="js/jquery.inview.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/mousescroll.js"></script>
+<script type="text/javascript" src="js/smoothscroll.js"></script>
+<script type="text/javascript" src="js/jquery.countTo.js"></script>
+<script type="text/javascript" src="js/lightbox.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

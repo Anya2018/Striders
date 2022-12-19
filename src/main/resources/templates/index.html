@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Suzhou Striders</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="images/run.png">
+</head><!--/head-->
+
+<body>
+
+<!--.preloader-->
+<div class="preloader"><i class="fa fa-circle-o-notch fa-spin"></i></div>
+<!--/.preloader-->
+
+<header id="home">
+    <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active" style="background-image: url(images/slider/001.jpg)">
+                <div class="caption">
+                    <h1 class="animated fadeInLeftBig">Welcome to <span>SUZHOU STRIDERS COMMUNITY</span></h1>
+                    <p class="animated fadeInRightBig">Community - Friendship - Commitment - Sport - Languages</p>
+                    <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(images/slider/002.jpg)">
+                <div class="caption">
+                    <h1 class="animated fadeInLeftBig">Say Hello to <span>Active Lifestyle</span></h1>
+                    <p class="animated fadeInRightBig">Track - ParkRun - Tempo - Long Run - Trail</p>
+                    <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(images/slider/04.jpg)">
+                <div class="caption">
+                    <h1 class="animated fadeInLeftBig">We are <span>Striders!</span></h1>
+                    <p class="animated fadeInRightBig">Sporty - Smart - Supportive - Friendly - Fast - Creative</p>
+                    <a data-scroll class="btn btn-start animated fadeInUpBig" href="#services">Start now</a>
+                </div>
+            </div>
+        </div>
+        <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+        <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+
+        <a id="tohash" href="#services"><i class="fa fa-angle-down"></i></a>
+
+    </div><!--/#home-slider-->
+    <div class="main-nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <h1><img class="img-responsive" src="images/logo.png" alt="logo"></h1>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="scroll active"><a href="#home">Home</a></li>
+                    <li class="scroll"><a href="#services">Training schedule</a></li>
+                    <li class="scroll"><a href="#portfolio">Challenges</a></li>
+                    <li class="scroll"><a href="#about-us">Worldwide</a></li>
+                    <li class="scroll"><a href="#team">We</a></li>
+                    <li class="scroll"><a href="#blog">Volunteers</a></li>
+                    <li><a th:href="@{users}">Users</a></li>
+                    <li class="scroll" type="submit" th:if="${currentuser} == 'noBodyHome'">
+                        <a th:href="@{login}">Login</a>
+                    </li>
+                    <li class="scroll" type="submit" th:if="${currentuser} != 'noBodyHome'">
+                        <a th:href="@{logout}">Logout</a>
+                    </li>
+                    <li class="scroll" type="submit">
+                        <a th:href="@{register}">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div><!--/#main-nav-->
+</header><!--/#home-->
+
+<section id="services">
+    <div class="container">
+        <div>
+            <div th:switch="${userName}" style="text-align:right;margin-top:-5em;">
+                <p th:case="'anonymousUser'"></p>
+                <h4 th:case="${userName}">Welcome <span th:text="${userName}"></span></h4>
+            </div>
+        </div>
+        <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="row">
+                <div class="text-center col-sm-8 col-sm-offset-2">
+                    <h2>Our Trainings</h2>
+                    <p>We aim to organize different kinds of weekly trainings which are suitable for every level.
+                        It is all for free thanks to our wonderful volunteers! </p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center our-services">
+            <div class="row">
+                <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <div style="background-image:url(images/logos/06.png); width: 100px;height: 100px;background-size: contain; margin-left:9em;">
+                    </div>
+                    <div class="service-info">
+                        <h3 style="font-weight:bold">Speed Session</h3>
+                        <h5>Tuesday</h5>
+                        <p>Track sessions for improving pace and techique.
+                            Includes warm-up and stretching in the end.</p>
+                        <a th:href="@{~/training}">
+                            <button type="button" class="btn btn-primary" style="margin-top:1em">
+                                Details
+                            </button>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="450ms">
+                    <div style="background-image:url(images/logos/02.png); width: 100px;height: 100px;background-size: contain;margin-left:9em;">
+
+                    </div>
+                    <div class="service-info">
+                        <h3 style="font-weight:bold">Park Run</h3>
+                        <h5>Saturday</h5>
+                        <p>Social 2.5km/5km run in Baitang Park with coffee and
+                            chat in Starbucks after the run. </p>
+                        <a th:href="@{~/trainingg}">
+                            <button type="button" class="btn btn-primary" style="margin-top:1em">Details</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="550ms">
+                    <div style="background-image:url(images/logos/03.png); width: 100px;height: 100px;background-size: contain;margin-left:9em;">
+
+                    </div>
+                    <div class="service-info">
+                        <h3 style="font-weight:bold">Long Run</h3>
+                        <h5>Sunday</h5>
+                        <p>Average 12-15km weekly run to improve aerobic endurance.
+                            Routes are changing weekly.</p>
+                        <button type="button" class="btn btn-primary" style="margin-top:1em">Details</button>
+                    </div>
+                </div>
+                <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="650ms">
+                </div>
+                <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="650ms">
+                    <div style="background-image:url(images/logos/01.png); width: 100px;height: 100px;background-size: contain;margin-left:9em;">
+                    </div>
+                    <div class="service-info">
+                        <h3 style="font-weight:bold">Trail Run</h3>
+                        <h5>Thursday</h5>
+                        <p>Running on hills and exploring new places in Suzhou and around it.
+                            Great way to keep fir, socialize and enjoy nature.</p>
+                        <button type="button" class="btn btn-primary" style="margin-top:1em">Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#services-->
+<section id="about-us" class="parallax">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="about-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <h2>About us</h2>
+                    <p>First of all, we are community and we prioritize friendship and support over
+                        competition. We enjoy training and taking part in running races as well as
+                        organzing events and celebrations to strengthen bonds between all striders.</p>
+                    <p> The community was founded by two passionate runners - Michael Gates and
+                        Booker Liu in 2018. They had an idea to connect chinese and foreigners
+                        through running. From the beginning all the events and trainings we hold are
+                        bilingual. We are international running community, and our goal to keep fit
+                        as well as make friend from around the world, improve language skills and have fun.</p>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="our-skills wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <p class="lead">Satisfaction</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"
+                                 aria-valuetransitiongoal="95">95%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
+                        <p class="lead">Running Speed</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"
+                                 aria-valuetransitiongoal="75">75%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <p class="lead">Race participation</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"
+                                 aria-valuetransitiongoal="60">60%
+                            </div>
+                        </div>
+                    </div>
+                    <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <p class="lead">Fun</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"
+                                 aria-valuetransitiongoal="85">85%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#about-us-->
+
+<section id="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms"
+                 data-wow-delay="300ms">
+                <h2>Our Events</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua ut enim ad minim veniam</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <div class="folio-image">
+                        <img class="img-responsive" src="images/portfolio/pr3.jpg" alt="" style=" height:274px;">
+                    </div>
+                    <div class=" overlay">
+                        <div class="overlay-content">
+                            <div class="overlay-text">
+                                <div class="folio-info">
+                                    <h3>100th ParkRun</h3>
+                                    <p>June 2022</p>
+                                </div>
+                                <div class="folio-overview">
+                                    <span class="folio-link"><a class="folio-read-more" href="#"
+                                                                data-single_url="portfolio-single.html"><i
+                                            class="fa fa-link"></i></a></span>
+                                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg"
+                                                                  data-lightbox="portfolio"><i
+                                            class="fa fa-search-plus"></i></a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
+                    <div class="folio-image">
+                        <img class="img-responsive" src="images/portfolio/19.jpg" alt=""
+                             style=" height:274px;">
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="overlay-text">
+                                <div class="folio-info">
+                                    <h3>GoodBye James</h3>
+                                    <p>June 2022</p>
+                                </div>
+                                <div class="folio-overview">
+                                    <span class="folio-link"><a class="folio-read-more" href="#"
+                                                                data-single_url="portfolio-single.html"><i
+                                            class="fa fa-link"></i></a></span>
+                                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg"
+                                                                  data-lightbox="portfolio"><i
+                                            class="fa fa-search-plus"></i></a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="500ms">
+                    <div class="folio-image">
+                        <img class="img-responsive" src="images/portfolio/33.jpg" alt="" style=" height:274px;">
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="overlay-text">
+                                <div class="folio-info">
+                                    <h3>YuShan Trail Run</h3>
+                                    <p>July 2021</p>
+                                </div>
+                                <div class="folio-overview">
+                                    <span class="folio-link"><a class="folio-read-more" href="#"
+                                                                data-single_url="portfolio-single.html"><i
+                                            class="fa fa-link"></i></a></span>
+                                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg"
+                                                                  data-lightbox="portfolio"><i
+                                            class="fa fa-search-plus"></i></a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="folio-image">
+                        <img class="img-responsive" src="images/portfolio/22.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="overlay-text">
+                                <div class="folio-info">
+                                    <h3>End of The Year Dinner</h3>
+                                    <p>December 2021</p>
+                                </div>
+                                <div class="folio-overview">
+                                    <span class="folio-link"><a class="folio-read-more" href="#"
+                                                                data-single_url="portfolio-single.html"><i
+                                            class="fa fa-link"></i></a></span>
+                                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg"
+                                                                  data-lightbox="portfolio"><i
+                                            class="fa fa-search-plus"></i></a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="700ms">
+                    <div class="folio-image">
+                        <img class="img-responsive" src="images/portfolio/55.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="overlay-text">
+                                <div class="folio-info">
+                                    <h3>XiShan Trail Run</h3>
+                                    <p>February 2021</p>
+                                </div>
+                                <div class="folio-overview">
+                                    <span class="folio-link"><a class="folio-read-more" href="#"
+                                                                data-single_url="portfolio-single.html"><i
+                                            class="fa fa-link"></i></a></span>
+                                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg"
+                                                                  data-lightbox="portfolio"><i
+                                            class="fa fa-search-plus"></i></a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="800ms">
+                    <div class="folio-image">
+                        <img class="img-responsive" src="images/portfolio/66.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="overlay-text">
+                                <div class="folio-info">
+                                    <h3>YangCheng Lake Relay</h3>
+                                    <p>November 2020</p>
+                                </div>
+                                <div class="folio-overview">
+                                    <span class="folio-link"><a class="folio-read-more" href="#"
+                                                                data-single_url="portfolio-single.html"><i
+                                            class="fa fa-link"></i></a></span>
+                                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg"
+                                                                  data-lightbox="portfolio"><i
+                                            class="fa fa-search-plus"></i></a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="900ms">
+                    <div class="folio-image">
+                        <img class="img-responsive" src="images/portfolio/90.jpg" alt="">
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="overlay-text">
+                                <div class="folio-info">
+                                    <h3>ParkRun Anniversary</h3>
+                                    <p>October 2021</p>
+                                </div>
+                                <div class="folio-overview">
+                                    <span class="folio-link"><a class="folio-read-more" href="#"
+                                                                data-single_url="portfolio-single.html"><i
+                                            class="fa fa-link"></i></a></span>
+                                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg"
+                                                                  data-lightbox="portfolio"><i
+                                            class="fa fa-search-plus"></i></a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="1000ms">
+                    <div class="folio-image">
+                        <img class="img-responsive" src="images/portfolio/88.png" alt="">
+                    </div>
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <div class="overlay-text">
+                                <div class="folio-info">
+                                    <h3>Autumn ParkRun</h3>
+                                    <p>November 2022</p>
+                                </div>
+                                <div class="folio-overview">
+                                    <span class="folio-link"><a class="folio-read-more" href="#"
+                                                                data-single_url="portfolio-single.html"><i
+                                            class="fa fa-link"></i></a></span>
+                                    <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg"
+                                                                  data-lightbox="portfolio"><i
+                                            class="fa fa-search-plus"></i></a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" style="margin-top:2em;
+margin-left:43em">
+                More
+            </button>
+        </div>
+    </div>
+    <div id="portfolio-single-wrap">
+        <div id="portfolio-single">
+        </div>
+    </div><!-- /#portfolio-single-wrap -->
+</section><!--/#portfolio-->
+
+<section id="team">
+    <div class="container">
+        <div class="row">
+            <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms"
+                 data-wow-delay="300ms">
+                <h2>The Team</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua ut enim ad minim veniam</p>
+            </div>
+        </div>
+        <div class="team-members">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="team-member wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <div class="member-image">
+                            <img class="img-responsive" src="images/team/mgates.jpg" alt=""
+                                 style="height:21em;">
+                        </div>
+                        <div class=" member-info">
+                            <h3>Michael Gates</h3>
+                            <h4>Founder</h4>
+                            <p>Runner from UK</p>
+                        </div>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="team-member wow flipInY" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <div class="member-image">
+                            <img class="img-responsive" src="images/team/booker.png" alt=""
+                                 style="height:21em;">
+                        </div>
+                        <div class=" member-info">
+                            <h3>Booker Liu</h3>
+                            <h4>Founder</h4>
+                            <p>Runner from the North of China</p>
+                        </div>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="team-member wow flipInY" data-wow-duration="1000ms" data-wow-delay="800ms">
+                        <div class="member-image">
+                            <img class="img-responsive" src="images/team/mikelow.jpg"
+                                 alt="" style="height:21em;">
+                        </div>
+                        <div class="member-info">
+                            <h3>Mike Low</h3>
+                            <h4>Organizer</h4>
+                            <p>The most positive person</p>
+                        </div>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="team-member wow flipInY" data-wow-duration="1000ms" data-wow-delay="1100ms">
+                        <div class="member-image">
+                            <img class="img-responsive" src="images/team/ro.png" alt=""
+                                 style="height:21em;">
+                        </div>
+                        <div class=" member-info">
+                            <h3>Roshan Devaraj</h3>
+                            <h4>Long Run Leader</h4>
+                            <p>Fast runner and nature lover</p>
+                        </div>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#team-->
+
+<section id="features" class="parallax">
+    <div class="container">
+        <div class="row count">
+            <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <i class="fa fa-user"></i>
+                <h3 class="timer">300</h3>
+                <p>Official Striders</p>
+            </div>
+            <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+                <i class="fa fa-desktop"></i>
+                <h3 class="timer">150</h3>
+                <p>Registered Users</p>
+            </div>
+            <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="700ms">
+                <i class="fa fa-trophy"></i>
+                <h3 class="timer">130</h3>
+                <p>Park Runs</p>
+            </div>
+            <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="900ms">
+                <i class="fa fa-comment-o"></i>
+                <h3>24/7</h3>
+                <p>Fast Support</p>
+            </div>
+        </div>
+    </div>
+</section><!--/#features-->
+
+<section id="pricing">
+    <div class="container">
+        <div class="row">
+            <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms"
+                 data-wow-delay="300ms">
+                <h2>Strider's Shop</h2>
+                <p>Wearing a Striders uniform reminds us one more time that we
+                    are all working together to achieve one common goal: to become stronger,
+                    faster and that we are a team!
+                    We have each other’s backs, and when we come across a
+                    challenge we’re all in it together!</p>
+            </div>
+        </div>
+        <div class="pricing-table">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <h3>T-Shirt</h3>
+                        <div class="price">
+                            ¥80
+                        </div>
+                        <ul>
+                            <li>Dry-Fit</li>
+                            <li>Fashionable Design</li>
+                            <li>Great Material</li>
+                            <li>Name printing is availabe</li>
+                        </ul>
+                        <a href="#" class="btn btn-lg btn-primary">Order</a>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <h3>Vest</h3>
+                        <div class="price">
+                            ¥80
+                        </div>
+                        <ul>
+                            <li>Good quality</li>
+                            <li>Sleeveless</li>
+                            <li>Modern design</li>
+                            <li>Name printing is availabe</li>
+                        </ul>
+                        <a href="#" class="btn btn-lg btn-primary">Order</a>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="single-table featured wow flipInY" data-wow-duration="1000ms" data-wow-delay="800ms">
+                        <h3>Water Bottle</h3>
+                        <div class="price">
+                            ¥90
+                        </div>
+                        <ul>
+                            <li>Made of Glass</li>
+                            <li>Striders Logo</li>
+                            <li>1 litre</li>
+                            <li>With the handle</li>
+                        </ul>
+                        <a href="#" class="btn btn-lg btn-primary">Order</a>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="single-table wow flipInY" data-wow-duration="1000ms" data-wow-delay="1100ms">
+                        <h3>Head Band</h3>
+                        <div class="price">
+                            ¥15
+                        </div>
+                        <ul>
+                            <li>Variety of Colors</li>
+                            <li>Striders Logo</li>
+                            <li>Easy to wash</li>
+                            <li>Soft material</li>
+                        </ul>
+                        <a href="#" class="btn btn-lg btn-primary">Order</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#pricing-->
+
+<section id="twitter" class="parallax">
+    <div>
+        <a class="twitter-left-control" href="#twitter-carousel" role="button" data-slide="prev"><i
+                class="fa fa-angle-left"></i></a>
+        <a class="twitter-right-control" href="#twitter-carousel" role="button" data-slide="next"><i
+                class="fa fa-angle-right"></i></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="twitter-icon text-center">
+                        <i class="fa fa-twitter"></i>
+                        <h3>Become a volunteer</h3>
+                    </div>
+                    <div id="twitter-carousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="item active wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <p>If you want to be involve in the community, there are many ways
+                                    to do this:</p>
+                            </div>
+                            <div class="item">
+                                <p>Help with ParkRun organization, lead a training, start
+                                    a core training, organize an event</p>
+                            </div>
+                            <div class="item">
+                                <p>If you have creative skills welcome to help with writing articles,
+                                    translations, creating posters, taking photos and videos of events</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#twitter-->
+
+<section id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms"
+                 data-wow-delay="300ms">
+                <h2>Challenges</h2>
+                <p>Taking part in a challenge helps you stay in shape, gives you motivation
+                    to keep exercising,teaches you how to organize your time,
+                    boosts friendships and you become inspiration for someone else.</p>
+            </div>
+        </div>
+        <div class="blog-posts">
+            <div class="row">
+                <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
+                    <div class="post-thumb">
+                        <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a>
+                        <div class="post-meta">
+                            <span><i class="fa fa-comments-o"></i> 3 Comments</span>
+                            <span><i class="fa fa-heart"></i> 0 Likes</span>
+                        </div>
+                    </div>
+                    <div class="entry-header">
+                        <h3><a href="#">Past Challenges</a></h3>
+                        <span class="date">Jan-Dec, 2021</span>
+                    </div>
+                    <div class="entry-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. </p>
+                    </div>
+                </div>
+                <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="post-thumb">
+                        <div id="post-carousel" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#post-carousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#post-carousel" data-slide-to="1"></li>
+                                <li data-target="#post-carousel" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <a href="#"><img class="img-responsive" src="images/blog/2.jpg" alt=""></a>
+                                </div>
+                                <div class="item">
+                                    <a href="#"><img class="img-responsive" src="images/blog/1.jpg" alt=""></a>
+                                </div>
+                                <div class="item">
+                                    <a href="#"><img class="img-responsive" src="images/blog/3.jpg" alt=""></a>
+                                </div>
+                            </div>
+                            <a class="blog-left-control" href="#post-carousel" role="button" data-slide="prev"><i
+                                    class="fa fa-angle-left"></i></a>
+                            <a class="blog-right-control" href="#post-carousel" role="button" data-slide="next"><i
+                                    class="fa fa-angle-right"></i></a>
+                        </div>
+                        <div class="post-meta">
+                            <span><i class="fa fa-comments-o"></i> 3 Comments</span>
+                            <span><i class="fa fa-heart"></i> 0 Likes</span>
+                        </div>
+
+                    </div>
+                    <div class="entry-header">
+                        <h3><a href="#">Current Challenges</a></h3>
+                        <span class="date">Jan-Dec, 2022</span>
+
+                    </div>
+                    <div class="entry-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. </p>
+                    </div>
+                </div>
+                <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="800ms">
+                    <div class="post-thumb">
+                        <a href="#"><img class="img-responsive" src="images/blog/3.jpg" alt=""></a>
+                        <div class="post-meta">
+                            <span><i class="fa fa-comments-o"></i> 3 Comments</span>
+                            <span><i class="fa fa-heart"></i> 0 Likes</span>
+                        </div>
+
+                    </div>
+                    <div class="entry-header">
+                        <h3><a href="#">Future Challenges</a></h3>
+                        <span class="date">Jan-Dec, 2023</span>
+
+                    </div>
+                    <div class="entry-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="load-more wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+                <a href="#" class="btn-loadmore"><i class="fa fa-repeat"></i> Load More</a>
+            </div>
+        </div>
+    </div>
+</section><!--/#blog-->
+
+<section id="contact">
+    <div id="google-map" class="wow fadeIn" data-latitude="31.303373" data-longitude="120.746657"
+         data-wow-duration="1000ms" data-wow-delay="400ms"></div>
+    <div id="contact-us" class="parallax">
+        <div class="container">
+            <div class="row">
+                <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms"
+                     data-wow-delay="300ms">
+                    <h2>Contact Us</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua ut enim ad minim veniam</p>
+                </div>
+            </div>
+            <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form id="main-contact-form" name="contact-form" method="post" action="#">
+                            <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" placeholder="Name"
+                                               required="required">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control"
+                                               placeholder="Email Address" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject"
+                                       required="required">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" id="message" class="form-control" rows="4"
+                                          placeholder="Enter your message" required="required"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn-submit">Send Now</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation.</p>
+                            <ul class="address">
+                                <li><i class="fa fa-map-marker"></i> <span> Address:</span> 2400 South Avenue A</li>
+                                <li><i class="fa fa-phone"></i> <span> Phone:</span> +928 336 2000</li>
+                                <li><i class="fa fa-envelope"></i> <span> Email:</span><a
+                                        href="mailto:someone@yoursite.com"> support@oxygen.com</a></li>
+                                <li><i class="fa fa-globe"></i> <span> Website:</span> <a href="#">www.sitename.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/#contact-->
+<footer id="footer">
+    <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+        <div class="container text-center">
+            <div class="footer-logo">
+                <a href="index.html"><img class="img-responsive" src="images/logo.png" alt=""></a>
+            </div>
+            <div class="social-icons">
+                <ul>
+                    <li><a class="envelope" href="#"><i class="fa fa-envelope"></i></a></li>
+                    <li><a class="facebook" href="https://www.facebook.com/groups/795861827155209"><i
+                            class="fa fa-facebook"></i></a></li>
+                    <li><a class="instagram" href="https://www.instagram.com/suzhou_striders/"><i
+                            class="fa fa-instagram"></i></a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>&copy; 2022 Suzhou Striders.</p>
+                </div>
+                <div class="col-sm-6">
+                    <p class="pull-right">Created by Anya Dmitrieva</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="js/jquery.inview.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/mousescroll.js"></script>
+<script type="text/javascript" src="js/smoothscroll.js"></script>
+<script type="text/javascript" src="js/jquery.countTo.js"></script>
+<script type="text/javascript" src="js/lightbox.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>

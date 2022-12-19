@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Training Diary</title>
+    <!--    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>-->
+    <!--    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>-->
+    <!--    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>-->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/lightbox.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link id="css-preset" href="css/presets/preset1.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+</head>
+<body>
+<div class="main-nav">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">
+                <h1><img class="img-responsive" src="images/logo.png" alt="logo"></h1>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="scroll active"><a href="#home">Home</a></li>
+                <li class="scroll"><a href="#services">Training schedule</a></li>
+                <li class="scroll"><a href="#portfolio">Challenges</a></li>
+                <li class="scroll"><a href="#about-us">Worldwide</a></li>
+                <li class="scroll"><a href="#team">We</a></li>
+                <li class="scroll"><a href="#blog">Volunteers</a></li>
+            </ul>
+        </div>
+    </div>
+</div><!--/#main-nav-->
+<div class="container text-center">
+    <h2 style="text-align:center;margin:1em;">Training Diary</h2>
+    <div style="text-align:right;margin:0.4em;">
+        <a th:href="@{~/addingtraining}">
+            <button type="submit">Add Training</button>
+        </a>
+    </div>
+    <div style="text-align:center;">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Weather</th>
+                <th>Participants</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="training: ${#lists.sort(listOfSpeedTrainings,byDate)}">
+                <!--            <tr th:each="training: ${listOfSpeedTrainings}">-->
+                <td th:text="${training.id}">Id</td>
+                <td>
+                    <a th:href="@{'/training-details/'+${training.id}}" th:text="${training.type}"></a>
+                </td>
+                <td th:text="${#dates.format(training.date, 'dd-MMM-yyyy')}">Date</td>
+                <td th:text="${training.description}">Description</td>
+                <td th:text="${training.weatherConditions}">Weather Conditions</td>
+                <td th:text="${training.participants}">Number Of Participants</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

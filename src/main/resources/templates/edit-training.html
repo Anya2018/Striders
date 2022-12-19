@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Training</title>
+</head>
+<body>
+<h1>Editing</h1>
+<div style="text-align:center;margin-top:1em;">
+    <form method="post" th:action="@{/updatetraining/{id}(id=${speedTraining.id})}"
+          th:object="${speedTraining}">
+        <label>Type:</label>
+        <select id="trainingType" th:field="*{type}">
+            <option hidden value="0">Select a type of training</option>
+            <option th:value="'Speed Training'">Speed Training</option>
+            <option th:value="'Park Run'">Park Run</option>
+            <option th:value="'Long Run'">Long Run</option>
+            <option th:value="'Trail Run'">Trail Run</option>
+            <option th:value="'Tempo Run'">Tempo Run</option>
+        </select>
+        <p></p>
+        <label>Date:</label>
+        <input id="date" placeholder="Description" required th:field="*{date}" type="date"/>
+        <p></p>
+        <label>Description:</label>
+        <input id="description" placeholder="Description" required th:field="*{description}" type="text"/>
+        <p></p>
+        <label>Weather:</label>
+        <input id="weatherConditions" placeholder="Weather" required th:field="*{weatherConditions}" type="text"/>
+        <p></p>
+        <label>Participants:</label>
+        <input id="participants" placeholder="Participants" required th:field="*{participants}" type="text"/>
+        <p></p>
+        <input type="submit" value="Update">
+    </form>
+</div>
+
+</body>
+</html>
